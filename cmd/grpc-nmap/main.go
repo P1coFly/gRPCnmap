@@ -3,7 +3,10 @@ package main
 import (
 	"log/slog"
 	"os"
+	"os/signal"
+	"syscall"
 
+	"github.com/P1coFly/gRPCnmap/internal/app"
 	"github.com/P1coFly/gRPCnmap/internal/config"
 )
 
@@ -21,6 +24,21 @@ func main() {
 	log.Info("starting server")
 
 	log.Debug("cfg's fields", "cfg", cfg)
+
+	application := app.New(log, cfg.GRPC.Port, cfg.GRPC.Timeout)
+
+	go application.GRPCServer.MustRun()
+
+	stop := make(chan os.Signal, 1)
+	signal.Notify(stop, syscall.SIGTERM, syscall.SIGINT)
+
+	sig := <-stop
+
+	log.Debug("stopping server", slog.String("signal", sig.String()))
+
+	application.GRPCServer.Stop()
+
+	log.Info("server stopped")
 }
 
 func setupLogger(logLVL string) *slog.Logger {
