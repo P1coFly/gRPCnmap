@@ -51,7 +51,7 @@ func (n *NmapServices) CheckVuln(
 	)
 
 	if err != nil {
-		log.Error("unable to create nmap scanner: %v", err)
+		log.Error("unable to create nmap scanner", "err", err)
 		return nil, err
 	}
 
@@ -63,7 +63,7 @@ func (n *NmapServices) CheckVuln(
 		log.Warn("run finished with warnings", "warn", warnings) // Warnings are non-critical errors from nmap.
 	}
 	if err != nil {
-		log.Error("unable to run nmap scan: %v", err)
+		log.Error("unable to run nmap scan", "err", err)
 		return nil, err
 	}
 
@@ -96,7 +96,7 @@ func (n *NmapServices) CheckVuln(
 								v, err := strconv.ParseFloat(el.Value, 32)
 
 								if err != nil {
-									log.Error("cann't conv el.val to float32: %v", err)
+									log.Error("cann't conv el.val to float32", "err", err)
 									continue
 								}
 
