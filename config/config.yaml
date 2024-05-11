@@ -1,4 +1,4 @@
 log_lvl: "debug" # debug, info, warn, error
 grpc:
-  port: 80
+  port: 8080
   timeout: 10h
