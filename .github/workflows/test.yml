@@ -21,6 +21,8 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version: '1.22'
+      - name: Install nmap
+        run: sudo apt-get update && sudo apt-get install -y nmap
       - name: Install Dependencies
         run: go mod download
       - name: Start Application
