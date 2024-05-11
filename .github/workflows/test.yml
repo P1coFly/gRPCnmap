@@ -21,7 +21,7 @@ jobs:
       - name: Install Dependencies
         run: go mod download
       - name: Start Application
-        run: СONFIG_PATH=./config/config.yaml & go run cmd/grpc-nmap/main.go & 
+        run: СONFIG_PATH=../config/config.yaml & go run cmd/grpc-nmap/main.go & 
           sleep 5  
       - name: Run Tests
         run: ONFIG_PATH=./config/config.yaml & make test
