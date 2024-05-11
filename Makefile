@@ -7,4 +7,4 @@ lint:
 build:
 	go build -o ${BINARY_NAME} cmd/grpc-nmap/main.go
 test:
-	go test
+	go test ./tests -v
