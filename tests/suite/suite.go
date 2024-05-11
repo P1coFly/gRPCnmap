@@ -54,7 +54,7 @@ func New(t *testing.T) (context.Context, *Suite) {
 }
 
 func configPath() string {
-	const key = "CONFIG_PATH"
+	const key = "CONFIG_PATH_TEST"
 
 	if v := os.Getenv(key); v != "" {
 		return v
