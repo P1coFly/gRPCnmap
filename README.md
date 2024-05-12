@@ -73,3 +73,6 @@ message Vulnerability {
 
 # Github Actions
 При пуше в ветку master запускаются тесты и линтер
+
+# Пример работы сервиса
+![screen postman](https://github.com/P1coFly/gRPCnmap/blob/master/postman.png)
