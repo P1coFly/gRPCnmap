@@ -15,6 +15,7 @@ type View struct {
 	port       int
 }
 
+// New creates view layer.
 func New(log *slog.Logger, controller checkvuln.Controller, port int) *View {
 	gRPCServer := grpc.NewServer()
 

@@ -18,10 +18,12 @@ type serverAPI struct {
 	controller Controller
 }
 
+// Register NetVulnServiceServer
 func Register(gRPC *grpc.Server, controller Controller) {
 	netvuln_v1.RegisterNetVulnServiceServer(gRPC, &serverAPI{controller: controller})
 }
 
+// CheckVuln handler
 func (s *serverAPI) CheckVuln(ctx context.Context, req *netvuln_v1.CheckVulnRequest) (*netvuln_v1.CheckVulnResponse, error) {
 	if req.GetTargets() == nil {
 		return nil, status.Error(codes.InvalidArgument, "targets is required")

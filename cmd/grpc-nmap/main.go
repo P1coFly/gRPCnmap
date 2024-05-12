@@ -29,15 +29,14 @@ func main() {
 
 	go application.GRPCServer.MustRun()
 
+	//GracefulStop
+	//waiting for the signal to stop
 	stop := make(chan os.Signal, 1)
 	signal.Notify(stop, syscall.SIGTERM, syscall.SIGINT)
-
 	sig := <-stop
 
 	log.Debug("stopping server", slog.String("signal", sig.String()))
-
 	application.GRPCServer.Stop()
-
 	log.Info("server stopped")
 }
 

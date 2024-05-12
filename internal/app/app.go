@@ -12,6 +12,7 @@ type App struct {
 	GRPCServer *grpcview.View
 }
 
+// New creates App (view + controller layeres)
 func New(
 	log *slog.Logger,
 	grpcPort int,

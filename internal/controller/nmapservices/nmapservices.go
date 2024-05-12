@@ -16,10 +16,12 @@ type NmapServices struct {
 	timeout time.Duration
 }
 
+// New creates NmapServices (controller  layer)
 func New(log *slog.Logger, timeout time.Duration) *NmapServices {
 	return &NmapServices{log: log, timeout: timeout}
 }
 
+// CheckVuln uses script vulners
 func (n *NmapServices) CheckVuln(
 	ctx context.Context,
 	targets []string,
@@ -33,7 +35,6 @@ func (n *NmapServices) CheckVuln(
 	log.Info("CheckVuln", "targets", targets, "ports", ports)
 
 	portsStr := make([]string, 0, len(ports))
-
 	for _, p := range ports {
 		portsStr = append(portsStr, strconv.Itoa(int(p)))
 	}
@@ -67,7 +68,6 @@ func (n *NmapServices) CheckVuln(
 		return nil, err
 	}
 
-	// Use the results to print an example output
 	var targetResults []*netvuln_v1.TargetResult
 
 	for _, host := range result.Hosts {

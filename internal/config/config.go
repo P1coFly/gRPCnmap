@@ -18,6 +18,8 @@ type GRPCConfig struct {
 	Timeout time.Duration `yaml:"timeout"`
 }
 
+// MustLoad loads config via a flag (--config), or via environment variables (CONFIG_PATH)
+// priority: flag > environment variables
 func MustLoad() *Config {
 	path := fetchConfigPath()
 
@@ -38,6 +40,8 @@ func MustLoad() *Config {
 	return &cfg
 }
 
+// MustLoadPath loads config by path
+// used in tests
 func MustLoadPath(configPath string) *Config {
 	// check if file exists
 	if _, err := os.Stat(configPath); os.IsNotExist(err) {
@@ -53,7 +57,7 @@ func MustLoadPath(configPath string) *Config {
 	return &cfg
 }
 
-// fetchConfigPath получает путь до конфига через флаг, либо через переменные среды
+// fetchConfigPath gets the path to the config via a flag (--config), or via environment variables (CONFIG_PATH)
 func fetchConfigPath() string {
 	var res string
 

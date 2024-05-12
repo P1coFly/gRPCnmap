@@ -24,8 +24,6 @@ const (
 )
 
 // New creates new test suite.
-//
-// TODO: for pipeline tests we need to wait for app is ready
 func New(t *testing.T) (context.Context, *Suite) {
 	t.Helper()
 	t.Parallel()
@@ -53,6 +51,8 @@ func New(t *testing.T) (context.Context, *Suite) {
 	}
 }
 
+// configPath gets config path via environment variables (CONFIG_PATH) or via hardcode
+// priority: environment variables > hardcode
 func configPath() string {
 	const key = "CONFIG_PATH_TEST"
 
