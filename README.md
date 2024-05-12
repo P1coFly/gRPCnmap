@@ -61,7 +61,7 @@ message Vulnerability {
 # Конфигурация
 Конфиг лежит ./config/config.yaml. Можно изменять:
 - уровень логирования;
-- port сервера;
+- port сервиса;
 - timeout обработки запроса;
 
 # Makefile
