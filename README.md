@@ -1,6 +1,6 @@
 # gRPC сервис обертка над nmap
 
-## Задание
+## Цель
 Написать gRPC сервис обертку над nmap с использованием следующего скрипта
 https://github.com/vulnersCom/nmap-vulners и предлагаемого API:
 
